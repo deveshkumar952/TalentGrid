@@ -22,7 +22,10 @@ export default function Dashboard() {
         dispatch(getAllPosts());
         dispatch(getAboutUser({token:localStorage.getItem("token")}));
     }
-  }, [dispatch, authState.isTokenThere]);
+    if(!authState.all_profile_fetched){
+        dispatch(getAllUsers());
+    }
+  }, [dispatch, authState.isTokenThere, authState.all_profile_fetched]);
 
 
 
