@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import styles from "./style.module.css";
-import { registerUser } from "@/config/redux/action/authAction";
+import { registerUser , loginUser } from "@/config/redux/action/authAction";
 import {emptyMessage} from "@/config/redux/reducer/authReducer/index.js"
 
 export default function LoginComponent() {
@@ -29,7 +29,13 @@ export default function LoginComponent() {
 
   useEffect(()=>{
     dispatch(emptyMessage());
-  },[ userLoginMethhod])
+  },[dispatch, userLoginMethhod])
+
+  useEffect(()=>{
+    if(localStorage.getItem("token")){
+      router.push("/dashboard");
+    }
+  },[router])
 
   const handleRegister = () => {
     console.log("registering...");
@@ -38,7 +44,7 @@ export default function LoginComponent() {
 
   const handleLogin = () => {
     console.log("login...");
-    
+    dispatch(loginUser({ email, password }));
   }
 
   return (
@@ -50,7 +56,7 @@ export default function LoginComponent() {
               {userLoginMethhod ? "Sign In" : "Sign Up"}
             </p>
             <p style={{ color: authState.isError ? "red" : "green" }}>
-              {authState.message.message}
+              {authState.message}
             </p>
             <div className={styles.inputContainer}>
               {!userLoginMethhod && (

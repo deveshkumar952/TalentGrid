@@ -56,3 +56,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:5000/get_all_user_profiles HTTP/1.1
+
+###
+GET http://localhost:5000/get_user_and_profile?token=aa9463912dca65b1f580a53822065eaee7cfbd9630db86f583852cfa6fc03665 HTTP/1.1
