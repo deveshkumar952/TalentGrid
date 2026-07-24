@@ -1,4 +1,4 @@
-import { getAboutUser } from "@/config/redux/action/authAction";
+import { getAboutUser, getAllUsers } from "@/config/redux/action/authAction";
 import { getAllPosts } from "@/config/redux/action/postAction";
 import DashboardLayout from "@/layout/DashboardLayout";
 import UserLayout from "@/layout/UserLayout";

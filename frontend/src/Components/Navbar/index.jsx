@@ -7,7 +7,6 @@ export default function NavBarComponent() {
   const router = useRouter();
 
   const authState = useSelector((state) => state.auth);
-console.log(authState);
 
   return (
     <div className={styles.container}>
