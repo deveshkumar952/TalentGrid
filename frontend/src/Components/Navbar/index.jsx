@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./styles.module.css";
 import { useRouter } from "next/router";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { reset } from "@/config/redux/reducer/authReducer/index.js";
 
 export default function NavBarComponent() {
   const router = useRouter();
+
+  const dispatch = useDispatch();
 
   const authState = useSelector((state) => state.auth);
 
@@ -16,12 +19,23 @@ export default function NavBarComponent() {
         </h1>
         <div className={styles.navBarOptionContainer}>
           {authState.profileFetched && (
-            <div style={{ display: "flex", gap:"1.2rem" }}>
+            <div style={{ display: "flex", gap: "1.2rem" }}>
               <p>Hey, {authState.user.userId.name}!</p>
-              <p style={{fontWeight:"bold",cursor:"pointer"}}>Profile</p>
+              <p style={{ fontWeight: "bold", cursor: "pointer" }}>Profile</p>
+
+              <p
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  router.push("/login");
+                  dispatch(reset());
+                }}
+                style={{ fontWeight: "bold", cursor: "pointer" }}
+              >
+                Log Out
+              </p>
             </div>
           )}
-          {!authState.profileFetched  &&
+          {!authState.profileFetched && (
             <div
               onClick={() => {
                 router.push("/login");
@@ -30,7 +44,7 @@ export default function NavBarComponent() {
             >
               <p>Be a Part</p>
             </div>
-          }
+          )}
         </div>
       </nav>
     </div>
