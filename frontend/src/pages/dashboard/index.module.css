@@ -1,0 +1,107 @@
+.scrollComponent {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.createPostContainer {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    width: 70%;
+    min-height: 170px;
+
+    padding: 1rem;
+    padding-bottom: 4.5rem;
+
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Profile Image */
+.userProfile {
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Text Area */
+.createPostContainer > textarea {
+    flex: 1;
+    min-height: 90px;
+    resize: none;
+
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    line-height: 1.5;
+
+    padding: 0.5rem;
+    background: transparent;
+}
+
+/* File Upload Label */
+.createPostContainer > label {
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Circular Add Button */
+.fab {
+    width: 45px;
+    height: 45px;
+
+    background: #0073b1;
+    color: white;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background 0.2s ease;
+}
+
+.fab:hover {
+    background: #005f91;
+}
+
+.fab > svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Upload Button */
+.uploadButton {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+
+    background-color: #0073b1;
+    color: white;
+
+    padding: 10px 20px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.uploadButton:hover {
+    background-color: #005f91;
+}
